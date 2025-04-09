@@ -54,6 +54,9 @@ jobs:
 
       - name: Install gosec 
         run: go install github.com/securego/gosec/v2/cmd/gosec@latest
-        
+    
+      - name: Add Go binaries to PATH
+        run: echo "$HOME/go/bin" >> $GITHUB_PATH       
+    
       - name: Run gosec
         run: gosec ./...
