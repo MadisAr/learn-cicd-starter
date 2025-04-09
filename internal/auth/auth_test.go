@@ -7,11 +7,6 @@ import (
 	"testing"
 )
 
-func pointlessFunction() {
-	//
-	//everything is commented out
-}
-
 func TestGetAPIKey(t *testing.T) {
 	type wantResult struct {
 		string
