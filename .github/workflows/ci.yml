@@ -29,5 +29,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
       - name: Format code
         run: test -z $(go fmt ./...)
+
+      - name: Install staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Add Go binaries to PATH
+        run: echo "$HOME/go/bin" >> $GITHUB_PATH
+
+      - name: Run staticcheck
+        run: staticcheck ./...
