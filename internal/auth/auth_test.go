@@ -22,7 +22,7 @@ func TestGetAPIKey(t *testing.T) {
 				"Authorization": []string{"ApiKey abc123"},
 			},
 			want: wantResult{
-				string: "",
+				string: "abc123",
 				error:  nil,
 			},
 		},
