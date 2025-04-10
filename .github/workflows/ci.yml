@@ -43,3 +43,20 @@ jobs:
 
       - name: Run staticcheck
         run: staticcheck ./...
+
+  security:
+    name: Security
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install gosec 
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+    
+      - name: Add Go binaries to PATH
+        run: echo "$HOME/go/bin" >> $GITHUB_PATH       
+    
+      - name: Run gosec
+        run: gosec ./...
